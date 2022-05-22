@@ -62,13 +62,15 @@ class FeedbackMessageController: UIViewController {
         viewModel.sendFeedbackResultPublisher
             .receive(on: RunLoop.main)
             .sink { (sendFeedbackResult) in
-                switch sendFeedbackResult {
-                case .success:
-                    self.showAlert("Отзыв успешно отправлен!")
-                case .error:
-                    self.showAlert("При отправке отзыва произошла ошибка")
-                case .none:
-                    self.showAlert("При отправке отзыва произошла ошибка")
+                DispatchQueue.main.async {
+                    switch sendFeedbackResult {
+                    case .success:
+                        self.showAlert("Отзыв успешно отправлен!")
+                    case .error:
+                        self.showAlert("При отправке отзыва произошла ошибка")
+                    case .none:
+                        self.showAlert("При отправке отзыва произошла ошибка")
+                    }
                 }
             }.store(in: &subscriptions)
     }
