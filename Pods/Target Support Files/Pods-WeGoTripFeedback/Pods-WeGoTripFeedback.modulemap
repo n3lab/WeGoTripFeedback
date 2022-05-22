@@ -1,0 +1,6 @@
+framework module Pods_WeGoTripFeedback {
+  umbrella header "Pods-WeGoTripFeedback-umbrella.h"
+
+  export *
+  module * { export * }
+}
